@@ -1,0 +1,19 @@
+{
+    "name": "ugo-brocard/router",
+    "description": "An attribute based router library",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "router\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ugo Brocard",
+            "email": "ugo.brocard.official+contact@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
