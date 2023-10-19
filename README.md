@@ -4,11 +4,12 @@ This **Composer package** simplifies route management in your PHP applications b
 
 ## ✨ Features
 
-- [x] Define routes using PHP attributes: *enhancing code readability and maintainability*. 
+- [x] Define routes using PHP attributes: **enhancing code readability and maintainability**. 
 - [x] Flexible handling of route parameters and URL constraints.
 - [x] Seamless integration with popular PHP frameworks.
-- [x] Route group management *for hierarchical organization of routes*.
-- [x] Middleware support *for advanced request processing customization*.
+- [x] Route group management **for hierarchical organization of routes**.
+- [x] Middleware support **for advanced request processing customization**.
+- [ ] Comprehensive documentation and usage examples **for quick adoption**.
 
 ## 🔗 Installation
 
@@ -45,15 +46,15 @@ final class MyController
 }
 ```
 
-For detailed documentation and usage examples, please refer to our (documentation)[https://github.com/ugo-brocard/router/wiki].
+For detailed documentation and usage examples, please refer to our [documentation](https://github.com/ugo-brocard/router/wiki).
 
 ## 🛡 License
 
-This project is licensed under the (MIT License)[https://github.com/ugo-brocard/router/blob/main/LICENSE].
+This project is licensed under the [MIT License](https://github.com/ugo-brocard/router/blob/main/LICENSE).
 
 ## 🤠 Credits
 
-This package was developed and maintained by (Ugo Brocard)[https://github.com/ugo-brocard].
+This package was developed and maintained by [Ugo Brocard](https://github.com/ugo-brocard).
 
 ## 💖 Acknowledgments
 
