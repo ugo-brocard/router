@@ -9,7 +9,7 @@ This **Composer package** simplifies route management in your PHP applications b
 - [x] Seamless integration with popular PHP frameworks.
 - [x] Route group management **for hierarchical organization of routes**.
 - [x] Middleware support **for advanced request processing customization**.
-- [ ] Comprehensive documentation and usage examples **for quick adoption**.
+- [x] Comprehensive documentation and usage examples **for quick adoption**.
 
 ## 🔗 Installation
 
