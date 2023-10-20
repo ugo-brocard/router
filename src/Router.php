@@ -56,20 +56,22 @@ class Router
     {
         $callback   = $this->routes[$method][$path] ?? null;
         $parameters = [];
-
+        
         if (!$callback) {
             $routes                    = $this->routes[$method];
             [ $callback, $parameters ] = $this->resolveCallback($routes, $path);
-            $middlewaresResults        = $this->resolveMiddlewares($this->middlewares[$method], $path);
-
+            
             if (!$callback) {
                 throw new CallbackException;
             }
         }
-
+        
+        
         if (!is_callable($callback)) {
             throw new CallbackException;
         }
+        
+        $middlewaresResults = $this->resolveMiddlewares($this->middlewares[$method], $path);
 
         return call_user_func($callback, $parameters, $middlewaresResults);
     }
@@ -124,10 +126,6 @@ class Router
             }
 
             $parameters = Parameter::resolveParameters($middlewareSegments, $pathSegments);
-            if (!$parameters) {
-                continue;
-            }
-
             $results = array_merge($results, $this->executeMiddlewares($callbacks, $parameters));
         }
 
