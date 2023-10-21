@@ -56,6 +56,13 @@ class Router
     {
         $callback   = $this->routes[$method][$path] ?? null;
         $parameters = [];
+
+        $inputSegments = explode("/", $path);
+        foreach ($inputSegments as $inputSegment) {
+            if (Parameter::isParameter($inputSegment)) {
+                $callback = null;
+            }
+        }
         
         if (!$callback) {
             $routes                    = $this->routes[$method];
