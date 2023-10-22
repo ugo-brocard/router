@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "router\\": "src/"
+            "Router\\": "src/"
         }
     },
     "authors": [
@@ -15,5 +15,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "php": ">=8.2"
+    }
 }

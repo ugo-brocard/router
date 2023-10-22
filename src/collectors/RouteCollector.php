@@ -1,18 +1,18 @@
 <?php
 declare(strict_types = 1);
 
-namespace router\collectors;
+namespace Router\Collectors;
 
 use ReflectionClass;
 use ReflectionMethod;
 
-use router\attributes\Route;
-use router\exceptions\UndefinedMethodException;
+use Router\Attributes\Route;
+use Router\Exceptions\UndefinedMethodException;
 
 /**
  * Class RouteCollector 
  * 
- * @package router\collectors
+ * @package Router\Collectors
  */
 class RouteCollector
 {

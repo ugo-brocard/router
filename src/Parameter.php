@@ -1,11 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace router;
+namespace Router;
 
 /**
  * Class Parameter
- * @package router
+ * 
+ * @package Router
  */
 final class Parameter
 {

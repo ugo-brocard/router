@@ -1,13 +1,13 @@
 <?php
 declare(strict_types = 1);
 
-namespace router\attributes;
+namespace Router\Attributes;
 
 use Attribute;
 
 /**
  * Class Delete (attribute)
- * @package router\attributes
+ * @package Router\Attributes
  */
 #[Attribute(Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 final class Delete extends Route

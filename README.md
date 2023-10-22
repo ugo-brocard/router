@@ -22,12 +22,12 @@ composer require ugo-brocard/router
 
 Here's a basic example of how to use this package to define a route using PHP attributes:
 ```php
-use router\attributes\{Route, Get, Post}
+use Router\Attributes\{Route, Get, Post}
 
 /**
  * Class MyController
  * 
- * @package application\controllers
+ * @package Application\Controllers
 */
 #[Route("/route-group")]
 final class MyController

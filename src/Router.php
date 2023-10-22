@@ -1,16 +1,16 @@
 <?php
 declare(strict_types = 1);
 
-namespace router;
+namespace Router;
 
-use router\collectors\MiddlewareCollector;
-use router\collectors\RouteCollector;
-use router\exceptions\CallbackException;
+use Router\Collectors\MiddlewareCollector;
+use Router\Collectors\RouteCollector;
+use Router\Exceptions\CallbackException;
 
 /**
  * Class Router
  * 
- * @package router
+ * @package Router
  */
 class Router
 {
@@ -57,6 +57,7 @@ class Router
         $callback   = $this->routes[$method][$path] ?? null;
         $parameters = [];
 
+        // TODO: REFACTOR THIS CODE (HOT FIX)
         $inputSegments = explode("/", $path);
         foreach ($inputSegments as $inputSegment) {
             if (Parameter::isParameter($inputSegment)) {

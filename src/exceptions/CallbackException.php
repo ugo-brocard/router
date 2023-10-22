@@ -1,13 +1,13 @@
 <?php 
 declare(strict_types = 1);
 
-namespace router\exceptions;
+namespace Router\Exceptions;
 
 use Exception;
 
 /**
  * Class CallbackException
  * 
- * @package router\exceptions
+ * @package Router\Exceptions
  */
 final class CallbackException extends Exception {}
