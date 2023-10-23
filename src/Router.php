@@ -86,6 +86,10 @@ class Router
             }
         }
 
+        if (end($pathSegments) === "") {
+            array_pop($pathSegments);
+        }
+
         $callback = $routes[$path] ?? null;
         if ($callback) {
             return array($callback, []);
@@ -93,6 +97,10 @@ class Router
 
         foreach ($routes as $route => $callback) {
             $routeSegments = explode("/", $route);
+
+            if (end($routeSegments) === "") {
+                array_pop($routeSegments);
+            }
 
             if (sizeof($routeSegments) !== sizeof($pathSegments)) {
                 continue;
