@@ -67,6 +67,14 @@ final class Parameter
         return preg_match(self::REGEX_PARAMETER, $input) === 1;
     }
 
+    /**
+     * Method extractParameterValue
+     * 
+     * @param string $input 
+     * @param null|string $type 
+     * @return string|int|float|bool|null 
+     * @throws InvalidParameterTypeException 
+     */
     protected static function extractParameterValue(string $input, ?string $type): string|int|float|bool|null {
         $value = $input;
         $type  = $type ? strtolower($type) : $type;
