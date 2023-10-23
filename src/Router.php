@@ -137,8 +137,7 @@ class Router
                 continue;
             }
 
-            $parameters = Parameter::resolveParameters($middlewareSegments, $pathSegments);
-            $results = array_merge($results, $this->executeMiddlewares($callbacks, $parameters));
+            $results = array_merge($results, $this->executeMiddlewares($callbacks));
         }
 
         return $results;
@@ -152,7 +151,7 @@ class Router
      * @return array 
      * @throws CallbackException 
      */
-    protected function executeMiddlewares(array $callbacks, array $parameters): array {
+    protected function executeMiddlewares(array $callbacks): array {
         $results = [];
         
         foreach ($callbacks as $callback) {
