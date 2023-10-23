@@ -3,9 +3,8 @@ declare(strict_types = 1);
 
 namespace Router;
 
-use Router\Collectors\MiddlewareCollector;
-use Router\Collectors\RouteCollector;
-use Router\Exceptions\CallbackException;
+use Router\Collectors\{RouteCollector, MiddlewareCollector};
+use Router\Exceptions\{NotFoundException, CallbackException};
 
 /**
  * Class Router
@@ -54,24 +53,11 @@ class Router
      */
     public function resolve(string $method, string $path): mixed
     {
-        $callback   = $this->routes[$method][$path] ?? null;
-        $parameters = [];
-
-        // TODO: REFACTOR THIS CODE (HOT FIX)
-        $inputSegments = explode("/", $path);
-        foreach ($inputSegments as $inputSegment) {
-            if (Parameter::isParameter($inputSegment)) {
-                $callback = null;
-            }
-        }
+        $routes                    = $this->routes[$method];
+        [ $callback, $parameters ] = $this->resolveCallbackAndParameters($routes, $path);
         
         if (!$callback) {
-            $routes                    = $this->routes[$method];
-            [ $callback, $parameters ] = $this->resolveCallback($routes, $path);
-            
-            if (!$callback) {
-                throw new CallbackException;
-            }
+            throw new NotFoundException;
         }
         
         
@@ -91,9 +77,19 @@ class Router
      * @param string $path 
      * @return array|null 
      */
-    protected function resolveCallback(array $routes, string $path): array|null
+    protected function resolveCallbackAndParameters(array $routes, string $path): array|null
     {
         $pathSegments = explode("/", $path);
+        foreach ($pathSegments as $pathSegment) {
+            if (Parameter::isParameter($pathSegment)) {
+                return null;
+            }
+        }
+
+        $callback = $routes[$path] ?? null;
+        if ($callback) {
+            return array($callback, []);
+        }
 
         foreach ($routes as $route => $callback) {
             $routeSegments = explode("/", $route);
