@@ -8,6 +8,18 @@
             "Router\\": "src/"
         }
     },
+    "keywords": [
+        "composer",
+        "router",
+        "routeing",
+        "attributes",
+        "controllers",
+        "library",
+        "php-library",
+        "php8",
+        "php8.1",
+        "php8.2"
+    ],
     "authors": [
         {
             "name": "Ugo Brocard",
