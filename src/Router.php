@@ -128,16 +128,40 @@ class Router
     protected function resolveMiddlewares(array $middlewares, string $path): mixed
     {
         $pathSegments = explode("/", $path);
+        foreach ($pathSegments as $pathSegment) {
+            if (Parameter::isParameter($pathSegment)) {
+                return null;
+            }
+        }
+
+        if (end($pathSegments) === "") {
+            array_pop($pathSegments);
+        }
+
         $results = [];
+        
+        $callbacks = $middlewares[$path] ?? null;
+        if ($callbacks) {
+            $results = $this->executeMiddlewares($callbacks);
+        }
 
         foreach ($middlewares as $middleware => $callbacks) {
             $middlewareSegments = explode("/", $middleware);
+
+            if (end($middlewareSegments) === "") {
+                array_pop($middlewareSegments);
+            }
 
             if (sizeof($middlewareSegments) !== sizeof($pathSegments)) {
                 continue;
             }
 
-            $results = array_merge($results, $this->executeMiddlewares($callbacks));
+            $parameters = Parameter::resolveParameters($middlewareSegments, $pathSegments);
+            if (!$parameters) {
+                continue;
+            }
+            
+            $results = array_merge($results, $this->executeMiddlewares($callbacks, $parameters));
         }
 
         return $results;
@@ -147,11 +171,11 @@ class Router
      * Method executeMiddlewares
      * 
      * @param array $callbacks 
-     * @param array $parameters 
+     * @param null|array $parameters 
      * @return array 
      * @throws CallbackException 
      */
-    protected function executeMiddlewares(array $callbacks): array {
+    protected function executeMiddlewares(array $callbacks, ?array $parameters = null): array {
         $results = [];
         
         foreach ($callbacks as $callback) {
@@ -163,7 +187,7 @@ class Router
                 }
             }
 
-            $results[] = call_user_func($callback);
+            $results[] = call_user_func($callback, $parameters);
         }
         
         return $results;
