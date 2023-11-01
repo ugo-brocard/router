@@ -1,6 +1,6 @@
 {
     "name": "ugo-brocard/router",
-    "description": "An attribute based router library",
+    "description": "This Composer package simplifies route management in your PHP applications by allowing the use of PHP attributes to define routes in an elegant and expressive way. It streamlines the setup of custom routes, enabling developers to define routing rules that are clear and intuitive.",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -33,8 +33,5 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.2"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^10.4"
     }
 }
